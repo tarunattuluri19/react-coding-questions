@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import './ShowDataInTable.css';
 
 function ShowDataInTable() {
   const[data,setData]=useState([]);
