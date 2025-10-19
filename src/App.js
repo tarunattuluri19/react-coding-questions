@@ -5,6 +5,7 @@ import BackButton from './features/BackButton'
 import FormValidations from './features/FormValidations'
 import ShowDataInTable from './features/ShowDataInTable'
 import CrudUsers from './features/CrudUsers'
+import Todo from './features/Todo'
 import './styles/GlobalStyles.css'
 
 const Layout = () => {
@@ -26,6 +27,7 @@ function App() {
           <Route path='/formvalidation' element={<FormValidations />} />
           <Route path='/showdataintable' element={<ShowDataInTable />} />
           <Route path='/crudusers' element={<CrudUsers />} />
+          <Route path='/todo' element={<Todo />} />
         </Route>
       </Routes>
     </BrowserRouter>

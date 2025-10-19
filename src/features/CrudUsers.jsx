@@ -7,50 +7,52 @@ function CrudUsers() {
   const [formData, setFormData] = useState({
     username: "",
     firstName: "",
-    lastName: ""
+    lastName: "",
   });
   const [editingId, setEditingId] = useState(null);
 
   const addUser = () => {
     const newUser = {
       id: users.length + 1,
-      ...formData
+      ...formData,
     };
     setUsers([...users, newUser]);
     setFormData({ username: "", firstName: "", lastName: "" });
   };
 
   const updateUser = (id) => {
-    setUsers(users.map(user => 
-      user.id === id ? { ...user, ...formData } : user
-    ));
+    setUsers(
+      users.map((user) => (user.id === id ? { ...user, ...formData } : user))
+    );
     setEditingId(null);
     setFormData({ username: "", firstName: "", lastName: "" });
   };
 
   const getUserDetails = (id) => {
-    const user = users.find(user => user.id === id);
+    const user = users.find((user) => user.id === id);
     setFormData(user);
     setEditingId(id);
   };
 
   const deleteUser = (id) => {
-    setUsers(users.filter(user => user.id !== id));
+    setUsers(users.filter((user) => user.id !== id));
   };
 
   const searchUser = () => {
-    return users.filter(user => {
+    return users.filter((user) => {
       const fullName = `${user.firstName} ${user.lastName}`.toLowerCase();
       const searchValue = searchTerm.toLowerCase();
-      return fullName.includes(searchValue) || 
-             user.username.toLowerCase().includes(searchValue);
+      return (
+        fullName.includes(searchValue) ||
+        user.username.toLowerCase().includes(searchValue)
+      );
     });
   };
 
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -88,8 +90,11 @@ function CrudUsers() {
           value={formData.lastName}
           onChange={handleInputChange}
         />
-        <button className="btn btn-primary" onClick={editingId ? () => updateUser(editingId) : addUser}>
-          {editingId ? 'Update' : 'Add'} User
+        <button
+          className="btn btn-primary"
+          onClick={editingId ? () => updateUser(editingId) : addUser}
+        >
+          {editingId ? "Update" : "Add"} User
         </button>
       </div>
 
@@ -110,8 +115,18 @@ function CrudUsers() {
                 <td>{item.firstName}</td>
                 <td>{item.lastName}</td>
                 <td>
-                  <button className="btn btn-primary" onClick={() => getUserDetails(item.id)}>Edit</button>
-                  <button className="btn btn-danger" onClick={() => deleteUser(item.id)}>Delete</button>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => getUserDetails(item.id)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => deleteUser(item.id)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}

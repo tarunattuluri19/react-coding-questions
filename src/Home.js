@@ -27,6 +27,9 @@ function Home() {
         <button onClick={() => handlePathNavigation("/crudusers")}>
           CrudUsers
         </button>
+        <button onClick={() => handlePathNavigation("/todo")}>
+          Todo
+        </button>
       
        
       </div>
