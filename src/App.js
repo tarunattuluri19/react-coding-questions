@@ -5,10 +5,11 @@ import BackButton from './features/BackButton'
 import FormValidations from './features/FormValidations'
 import ShowDataInTable from './features/ShowDataInTable'
 import CrudUsers from './features/CrudUsers'
+import './styles/GlobalStyles.css'
 
 const Layout = () => {
   return (
-    <div>
+    <div className="container">
       <BackButton />
       <Outlet />
     </div>

@@ -55,9 +55,10 @@ function CrudUsers() {
   };
 
   return (
-    <div>
-      <div style={{ margin: "20px 0" }}>
+    <div className="container">
+      <div className="form-group">
         <input
+          className="search-input"
           type="text"
           placeholder="Search users..."
           value={searchTerm}
@@ -65,53 +66,58 @@ function CrudUsers() {
         />
       </div>
 
-      <div style={{ margin: "20px 0" }}>
+      <div className="form-group">
         <input
+          className="form-control"
           name="username"
           placeholder="Username"
           value={formData.username}
           onChange={handleInputChange}
         />
         <input
+          className="form-control"
           name="firstName"
           placeholder="First Name"
           value={formData.firstName}
           onChange={handleInputChange}
         />
         <input
+          className="form-control"
           name="lastName"
           placeholder="Last Name"
           value={formData.lastName}
           onChange={handleInputChange}
         />
-        <button onClick={editingId ? () => updateUser(editingId) : addUser}>
+        <button className="btn btn-primary" onClick={editingId ? () => updateUser(editingId) : addUser}>
           {editingId ? 'Update' : 'Add'} User
         </button>
       </div>
 
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-        <thead>
-          <tr>
-            <th>User Name</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {searchUser().map((item) => (
-            <tr key={item.id}>
-              <td>{item.username}</td>
-              <td>{item.firstName}</td>
-              <td>{item.lastName}</td>
-              <td>
-                <button onClick={() => getUserDetails(item.id)}>Edit</button>
-                <button onClick={() => deleteUser(item.id)}>Delete</button>
-              </td>
+      <div className="table-container">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>User Name</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {searchUser().map((item) => (
+              <tr key={item.id}>
+                <td>{item.username}</td>
+                <td>{item.firstName}</td>
+                <td>{item.lastName}</td>
+                <td>
+                  <button className="btn btn-primary" onClick={() => getUserDetails(item.id)}>Edit</button>
+                  <button className="btn btn-danger" onClick={() => deleteUser(item.id)}>Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
